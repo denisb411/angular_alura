@@ -24,8 +24,12 @@ export class SignInComponent implements OnInit {
     ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
             userName: ['', Validators.required],
-            password: ['', Validators.required]
+            password: ['', Validators.required],
         });
+
+        this.platformDetectorService.isPlatformBrowser() &&
+            this.userNameInput.nativeElement.focus();
+
     }
 
     login() {
